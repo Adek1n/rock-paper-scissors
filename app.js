@@ -2,6 +2,18 @@ const player_choices=document.querySelectorAll(".player-choice");
 const enemy_choices=document.querySelectorAll(".enemy-choice");
 const outcome_display=document.querySelector(".outcome-display");
 let player_choice;
+
+
+FBInstant.initializeAsync().then(()=>{
+    console.log("hello");
+    let progress=0;
+    setInterval(()=>{
+        FBInstant.setLoadingProgress(progress);
+        progress+=5;
+    },100)
+})
+
+
 class gameCore{
     seconds=15;
     textdisplay=`Starting new round...`;
@@ -33,7 +45,6 @@ class gameCore{
         if(player_choice==undefined){
             this.textdisplay="You didnt even try..."
         }
-        console.log(`${player_choice} ${enemy_choice} ${this.textdisplay}`);
     }
     enemyChoice(){
         const randEnemyChoice=Math.floor(Math.random()*3);
